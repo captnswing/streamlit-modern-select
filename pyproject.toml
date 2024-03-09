@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "modern-select"
+name = "streamlit-modern-select"
 version = "0.1.0"
 description = ""
 authors = ["Frank Hoffsümmer <frank.hoffsummer@gmail.com>"]
