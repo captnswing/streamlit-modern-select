@@ -36,7 +36,9 @@ else:
     # build directory:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("streamlit_modern_select", path=build_dir)
+    _component_func = components.declare_component(
+        "streamlit_modern_select", path=build_dir
+    )
 
 
 def streamlit_modern_select(options, size=5, key=None):
@@ -60,5 +62,10 @@ if not _RELEASE:
 
     st.subheader("Select with size 6")
     selected_value = streamlit_modern_select(options=flowers, size=6)
+    if selected_value:
+        st.markdown(f"You've selected {selected_value}")
+
+    st.subheader("Select with size 1")
+    selected_value = streamlit_modern_select(options=flowers, size=1)
     if selected_value:
         st.markdown(f"You've selected {selected_value}")
