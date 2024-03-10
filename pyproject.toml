@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "streamlit-modern-select"
 version = "0.1.1a0"
-description = ""
+description = "Streamlit component that allows you to display a selectbox with size >= 1"
 authors = ["Frank Hoffsümmer <frank.hoffsummer@gmail.com>"]
 readme = "README.md"
 license = "LICENSE"
@@ -9,17 +9,16 @@ include = [
     "modern_select/frontend/build"
 ]
 exclude = [
+    "streamlit_modern_select/frontend/.prettierrc",
     "streamlit_modern_select/frontend/node_modules",
     "streamlit_modern_select/frontend/package*",
     "streamlit_modern_select/frontend/public",
     "streamlit_modern_select/frontend/src",
     "streamlit_modern_select/frontend/tsconfig.json",
-    "streamlit_modern_select/frontend/.prettierrc"
-
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.8"
 watchdog = "^4.0.0"
 streamlit = "1.32.0"
 
