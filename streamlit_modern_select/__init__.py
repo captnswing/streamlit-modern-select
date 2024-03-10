@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 import streamlit.components.v1 as components
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
@@ -23,7 +24,7 @@ if not _RELEASE:
         # We give the component a simple, descriptive name ("my_component"
         # does not fit this bill, so please choose something better for your
         # own component :)
-        "modern_select",
+        "streamlit_modern_select",
         # Pass `url` here to tell Streamlit that the component will be served
         # by the local dev server that you run via `npm run start`.
         # (This is useful while your component is in development.)
@@ -35,9 +36,29 @@ else:
     # build directory:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("modern_select", path=build_dir)
+    _component_func = components.declare_component("streamlit_modern_select", path=build_dir)
 
 
-def modern_select(options, size=5, key=None):
+def streamlit_modern_select(options, size=5, key=None):
     component_value = _component_func(options=options, size=size, key=key, default="")
     return component_value
+
+
+if not _RELEASE:
+    flowers = [
+        "Rose",
+        "Tulip",
+        "Daisy",
+        "Orchid",
+        "Lily",
+        "Sunflower",
+        "Daffodil",
+        "Hyacinth",
+        "Iris",
+        "Peony",
+    ]
+
+    st.subheader("Select with size 6")
+    selected_value = streamlit_modern_select(options=flowers, size=6)
+    if selected_value:
+        st.markdown(f"You've selected {selected_value}")
