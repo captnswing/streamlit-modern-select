@@ -18,20 +18,22 @@ class ModernSelect extends StreamlitComponentBase<State> {
         // via `this.props.args`.
         const options = this.props.args["options"]
         const size = this.props.args["size"]
+        const index = this.props.args["index"] // get the index value passed from Python
+
         return (
-        <div>
-            <select
-                size={size}
-                onChange={this.onSelectionChange}
-                disabled={this.props.disabled}
-            >
-                {options.map((option: string) => (
-                    <option key={option} value={option}>
-                        {option}
-                    </option>
-                ))}
-            </select>
-        </div>
+            <div>
+                <select
+                    size={size}
+                    onChange={this.onSelectionChange}
+                    disabled={this.props.disabled}
+                >
+                    {options.map((option: string, i: number) => (
+                        <option key={option} value={option} selected={i === index}>
+                            {option}
+                        </option>
+                    ))}
+                </select>
+            </div>
         )
     }
 

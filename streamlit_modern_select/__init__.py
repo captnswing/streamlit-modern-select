@@ -41,8 +41,13 @@ else:
     )
 
 
-def streamlit_modern_select(options, size=5, key=None):
-    component_value = _component_func(options=options, size=size, key=key, default="")
+def streamlit_modern_select(options, size=5, index=None, key=None):
+    default_value = (
+        options[index] if index is not None else (options[0] if size == 1 else "")
+    )
+    component_value = _component_func(
+        options=options, size=size, index=index, key=key, default=default_value
+    )
     return component_value
 
 
@@ -60,12 +65,22 @@ if not _RELEASE:
         "Peony",
     ]
 
-    st.subheader("Select with size 6")
+    st.markdown("## Streamlit Modern Select")
+    st.subheader("Options:")
+    st.write(flowers)
+
+    st.subheader("Select with size 6 and no index")
     selected_value = streamlit_modern_select(options=flowers, size=6)
-    if selected_value:
-        st.markdown(f"You've selected {selected_value}")
+    st.markdown(f"You've selected `{selected_value}`")
+
+    st.subheader("Select with size 3 and index 5")
+    selected_value = streamlit_modern_select(options=flowers, size=3, index=5)
+    st.markdown(f"You've selected `{selected_value}`")
 
     st.subheader("Select with size 1")
     selected_value = streamlit_modern_select(options=flowers, size=1)
-    if selected_value:
-        st.markdown(f"You've selected {selected_value}")
+    st.markdown(f"You've selected `{selected_value}`")
+
+    st.subheader("Select with size 7")
+    selected_value = streamlit_modern_select(options=flowers, size=1, index=7)
+    st.markdown(f"You've selected `{selected_value}`")
