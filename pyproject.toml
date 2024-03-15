@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "streamlit-modern-select"
-version = "0.1.1a1"
+version = "0.1.1a3"
 description = "Streamlit component that allows you to display a selectbox with size >= 1"
 authors = ["Frank Hoffsümmer <frank.hoffsummer@gmail.com>"]
 readme = "README.md"
@@ -18,9 +18,9 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8"
-watchdog = "^4.0.0"
-streamlit = "1.32.0"
+python = ">3.9.7"
+watchdog = "*"
+streamlit = "*"
 
 
 [build-system]
