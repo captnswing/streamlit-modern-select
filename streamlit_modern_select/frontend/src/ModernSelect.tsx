@@ -19,13 +19,10 @@ class ModernSelect extends StreamlitComponentBase<State> {
         const options = this.props.args["options"]
         const size = this.props.args["size"]
         const index = this.props.args["index"]
-        const selectedOption = options[index] || options[0]
-
         return (
             <div>
                 <select
                     size={size}
-                    value={selectedOption}
                     onChange={this.onSelectionChange}
                     disabled={this.props.disabled}
                 >
