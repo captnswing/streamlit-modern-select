@@ -1,10 +1,10 @@
-[tool.poetry]
+[project]
 name = "streamlit-modern-select"
-version = "0.1.1a3"
+version = "0.1.2"
 description = "Streamlit component that allows you to display a selectbox with size >= 1"
-authors = ["Frank Hoffsümmer <frank.hoffsummer@gmail.com>"]
+authors = [{ name = "Frank Hoffsümmer", email = "frank.hoffsummer@gmail.com" }]
 readme = "README.md"
-license = "LICENSE"
+requires-python = ">=3.10"
 include = [
     "modern_select/frontend/build"
 ]
@@ -16,13 +16,23 @@ exclude = [
     "streamlit_modern_select/frontend/src",
     "streamlit_modern_select/frontend/tsconfig.json",
 ]
+dependencies = [
+    "playwright >= 1.47.0",
+    "streamlit >= 1.38.0",
+    "watchdog >= 4.0.2",
+]
 
-[tool.poetry.dependencies]
-python = ">3.9.7"
-watchdog = "*"
-streamlit = "*"
+[tool.uv]
+package = true
+python-preference = "managed"
+dev-dependencies = [
+    "pytest >= 8.3.3",
+    "ruff >= 0.6.7",
+]
 
+[tool.hatch.build.targets.wheel]
+packages = ["streamlit_modern_select"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
